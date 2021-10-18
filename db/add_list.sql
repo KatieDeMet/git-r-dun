@@ -1,0 +1,1 @@
+INSERT INTO lists VALUES(default, $1, default, $2);
