@@ -1,0 +1,1 @@
+INSERT INTO items VALUES(default, $1, $2, default);

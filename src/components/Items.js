@@ -1,11 +1,17 @@
 import React, {useState, useEffect} from 'react';
 import axios from 'axios';
 
+const baseURL = "http://localhost:7777"
+
 export default function Items(props) {
-    const [items, setItems] = useState([])
+    const [items, setItems] = useState([]);
+    const [modal, setModal] = useState(false);
+    const [editModal, setEditModal] = useState(false);
+    const [currentItem, setCurrentItem] = useState(null);
+    const [newItem, setNewItem] = useState("");
 
     const getItems = async (id) => {
-        await axios.get(`http://localhost:7777/items/${id}`)
+        await axios.get(`${baseURL}/items/${id}`)
             .then(res => {
                 setItems(res.data)
             })
@@ -16,19 +22,86 @@ export default function Items(props) {
         getItems(props.id)
     }, [])
 
+    const openModal = () => {
+        setModal(true)
+    }
+
+    const openEditModal = (e) => {
+        setCurrentItem(e.target.id)
+        setEditModal(true)
+    }
+
+    const handleChange = (e) => {
+        setNewItem(e.target.value)
+    }
     
-    const handleAddItem = () => {
-        getItems(props.id)
+    const handleAddItem = async (e) => {
+        e.preventDefault()
+        await axios.post(`${baseURL}/items/${props.id}`, {"name": newItem})
+            .then(() => {
+                setNewItem("")
+                setModal(false)
+                getItems(props.id)
+            })
+            .catch(err => {
+                console.log(err)
+            })
+    }
+
+    const handleEditItem = async (e) => {
+        e.preventDefault()
+        await axios.patch(`${baseURL}/items/${currentItem}`, {"name": newItem})
+            .then(() => {
+                setCurrentItem(null)
+                setNewItem("")
+                setEditModal(false)
+                getItems(props.id)
+            })
+            .catch(err => console.log(err))
+    }
+
+    const handleDelete = async (e) => {
+        await axios.delete(`${baseURL}/items/${e.target.id}`)
+            .then(() => {
+                getItems(props.id)
+            })
+            .catch(err => console.log(err))
+    }
+
+    const handleCancel = () => {
+        setEditModal(false)
+        setModal(false)
     }
 
     return (
         <>
         <ul>
             {items.map((item) => {
-                return (<li key={item.id}>{item.description}</li>)
+                return (
+                    <li key={item.id}>{item.description}
+                    <img src="/images/edit.png" alt="edit" id={item.id} className="button" onClick={openEditModal} />
+                    <img src="/images/trashcan.png" alt="delete" id={item.id} className="button" onClick={handleDelete} />
+                    </li>
+                )
             })}
         </ul>
-        <button onClick={handleAddItem}></button>
+        {editModal ? (
+            <form onSubmit={handleEditItem}>
+                <label htmlFor="editListItem">Edit Item:</label>
+                <input type="text" name="editListItem" value={newItem} onChange={handleChange}></input>
+                <input type="submit" value="Edit Item"></input>
+                <button onClick={handleCancel}>Cancel</button>
+            </form>
+        ) : null}
+        {modal | editModal ? null : <button onClick={openModal}>Add Item</button>}
+        {modal ? (
+            <form onSubmit={handleAddItem}>
+                <label htmlFor="addListItem">New Item:</label>
+                <input type="text" name="addListItem" id="addListItem" value={newItem} onChange={handleChange}></input>
+                <input type="submit" value="Add Item"></input>
+                <button onClick={handleCancel}>Cancel</button>
+            </form>
+        ) : null}
         </>
     );
 }

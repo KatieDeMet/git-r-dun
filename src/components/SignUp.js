@@ -4,6 +4,8 @@ import {Link} from 'react-router-dom';
 import UserContext from '../UserContext';
 import Header from './Header';
 
+const baseURL = "http://localhost:7777"
+
 export default function SignUp(props) {
 
     const [email, setEmail] = useState("");
@@ -72,7 +74,7 @@ export default function SignUp(props) {
                 username: username,
                 password: password
             }
-            await axios.post("http://localhost:7777/signup", {newUser})
+            await axios.post(`${baseURL}/signup`, {newUser})
                 .then(res => {
                     setEmail("")
                     setUsername("")

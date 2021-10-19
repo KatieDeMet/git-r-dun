@@ -16,6 +16,7 @@
   height: 8vh;
   width: auto;
   padding-right: 10px;
+  cursor: pointer;
 }
 
 .main {
@@ -68,10 +69,11 @@ aside {
   height: 90vh;
 }
 
-.list img {
+.button {
   width: 12px;
   height: auto;
   margin: 0 2px;
+  cursor: pointer;
 }
 
 .main-content {

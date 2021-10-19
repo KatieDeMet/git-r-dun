@@ -4,6 +4,8 @@ import axios from 'axios';
 import UserContext from '../UserContext';
 import Header from './Header';
 
+const baseURL = "http://localhost:7777"
+
 function Login(props) {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
@@ -23,7 +25,7 @@ function Login(props) {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        axios.get(`http://localhost:7777/user/${username}/${password}`)
+        axios.get(`${baseURL}/user/${username}/${password}`)
             .then(res => {
                 user.setUser(res.data)
                 user.setLoggedIn(true)

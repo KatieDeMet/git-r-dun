@@ -19,8 +19,13 @@ app.use(cors());
 app.get("/user/:name/:pass", cntl.getUser);
 app.get("/lists/:id", cntl.getLists);
 app.post("/lists/:id", cntl.addList);
+app.patch("/lists/:id", cntl.updateList);
+app.delete("/lists/:id", cntl.deleteList);
 app.post("/signup", cntl.signUp);
 app.get("/items/:id", cntl.getItems);
+app.post("/items/:id", cntl.addItem);
+app.patch("/items/:id", cntl.updateItem);
+app.delete("/items/:id", cntl.deleteItem);
 
 massive({
     connectionString: CONNECTION_STRING,

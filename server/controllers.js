@@ -56,11 +56,36 @@ module.exports = {
     addList: async (req, res) => {
         const db = req.app.get('db')
         await db.add_list([+req.params.id, req.body.name])
-        res.status(200).end()
+        res.status(200).send("List added")
+    },
+    updateList: async (req, res) => {
+        const db = req.app.get('db')
+        await db.update_list([req.body.name, +req.params.id])
+        res.status(200).send("List updated")
+    },
+    deleteList: async (req, res) => {
+        const db = req.app.get('db')
+        await db.delete_list([+req.params.id])
+        res.status(200).send("List deleted")
     },
     getItems: async (req, res) => {
         const db = req.app.get('db')
         const get_items = await db.get_items([+req.params.id]) 
         res.status(200).send(get_items)
+    },
+    addItem: async (req, res) => {
+        const db = req.app.get('db')
+        await db.add_item([+req.params.id, req.body.name])
+        res.status(200).send("Item added")
+    },
+    updateItem: async (req, res) => {
+        const db = req.app.get('db')
+        await db.update_item([req.body.name, +req.params.id])
+        res.status(200).send("Item updated")
+    },
+    deleteItem: async (req, res) => {
+        const db = req.app.get('db')
+        await db.delete_item([+req.params.id])
+        res.status(200).send("Item deleted")
     }
 }
