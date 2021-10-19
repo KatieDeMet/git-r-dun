@@ -1,5 +1,5 @@
 import React, {useState, useContext, useEffect} from 'react';
-import {withRouter, Link} from 'react-router-dom';
+import {withRouter} from 'react-router-dom';
 import UserContext from '../UserContext';
 import axios from 'axios';
 import Header from './Header';

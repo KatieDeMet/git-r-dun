@@ -31,8 +31,10 @@ function Login(props) {
             .catch(err => {
                 if(err.response.status === 400) {
                     setUserError(err.response.data)
+                    return
                 } else if(err.response.status === 401) {
                     setPassError(err.response.data)
+                    return
                 } else {
                     console.log(err)
                 }

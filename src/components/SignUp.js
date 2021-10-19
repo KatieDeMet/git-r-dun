@@ -81,9 +81,10 @@ export default function SignUp(props) {
                     userContext.setLoggedIn(true)
                 })
                 .catch(err => {
-                    if(err.reponse.status === 400) {
+                    if(err.response.status === 400) {
                         let message = err.response.data
-                    message.includes("Username") ? setUserError(message) : setOldEmailError(message)
+                        message.includes("Username") ? setUserError(message) : setOldEmailError(message)
+                        return
                     } else {
                         console.log(err)
                     }

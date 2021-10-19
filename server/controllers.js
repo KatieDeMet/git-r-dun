@@ -27,22 +27,26 @@ module.exports = {
     signUp: async (req, res) => {
         let {email, username, password} = req.body.newUser
         const db= req.app.get('db')
-        const get_new_user = await db.get_new_user([email])
-        if(get_new_user.length > 0) {
-            res.statusMessage = "Email is already registered"
-            res.status(400).send(res.statusMessage)
+        try {
+            const get_new_user = await db.get_new_user([email])
+            if(get_new_user.length > 0) {
+                res.statusMessage = "Email is already registered"
+                res.status(400).send(res.statusMessage)
+            }
+            let get_user = await db.get_user([username])
+            if(get_user.length > 0) {
+                res.statusMessage = "Username is taken"
+                res.status(400).send(res.statusMessage)
+            }
+            
+            const salt = bcrypt.genSaltSync(10);
+            const passHash = bcrypt.hashSync(password, salt);
+            await db.create_user([email, username, passHash])
+            get_user = await db.get_user([username])
+            res.status(200).send(get_user)
+        } catch (err) {
+            console.log(err)
         }
-        let get_user = await db.get_user([username])
-        if(get_user.length > 0) {
-            res.statusMessage = "Username is taken"
-            res.status(400).send(res.statusMessage)
-        }
-        
-        const salt = bcrypt.genSaltSync(10);
-        const passHash = bcrypt.hashSync(password, salt);
-        await db.create_user([email, username, passHash])
-        get_user = await db.get_user([username])
-        res.status(200).send(get_user)
     },
     getLists: async (req, res) => {
         const db = req.app.get('db')
