@@ -4,7 +4,7 @@ import axios from 'axios';
 import UserContext from '../UserContext';
 import Header from './Header';
 
-const baseURL = "http://localhost:7777"
+const baseURL = ""
 
 function Login(props) {
     const [username, setUsername] = useState("");

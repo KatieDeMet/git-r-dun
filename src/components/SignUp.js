@@ -4,7 +4,7 @@ import {Link} from 'react-router-dom';
 import UserContext from '../UserContext';
 import Header from './Header';
 
-const baseURL = "http://localhost:7777"
+const baseURL = ""
 
 export default function SignUp(props) {
 

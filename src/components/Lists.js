@@ -5,7 +5,7 @@ import axios from 'axios';
 import Header from './Header';
 import Items from './Items';
 
-const baseURL = "http://localhost:7777"
+const baseURL = ""
 
 function Lists(props) {
     const [lists, setLists] = useState([]);
