@@ -35,6 +35,5 @@ massive({
 }).then(db => {
     app.set('db', db);
     console.log('db connected')
+    app.listen(PORT, () => console.log(`Up on port ${PORT}`))
 });
-
-app.listen(PORT, () => console.log(`Up on port ${PORT}`))
