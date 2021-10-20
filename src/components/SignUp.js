@@ -95,29 +95,43 @@ export default function SignUp(props) {
     }
 
     return (
-        <>
+        <div className="main-background">
         <Header />
          { userContext.loggedIn ? props.history.push(`/lists/${userContext.user[0].id}`) : (
         <div className="main">
         <div className="form-container">
             <h2>Sign up here</h2>
-        <form onSubmit={handleSubmit}>
-            <label htmlFor="email">Email:</label>
-            <input required type="text" name="email" id="email" value={email} onChange={handleChange}></input>
-            <p className="error-message">{emailError}</p>
-            <p className="error-message">{oldEmailError}</p>
-            <label htmlFor="username">Choose a username:</label>
-            <input required type="text" name="username" id="username" value={username} onChange={handleChange}></input>
-            <p className="error-message">{userError}</p>
-            <label htmlFor="password">Create a password:</label>
-            <input required type="text" name="password" id="password" value={password} onChange={handleChange}></input>
-            <p className="error-message">{passwordError}</p>
-            <input type="submit" value="Submit"></input>
-        </form>
-        <p>Already have an account? <Link to="Login">Log in here.</Link></p>
+            <form onSubmit={handleSubmit}>
+                <div className="form-row">
+                    <label htmlFor="email">Email:</label>
+                    <input required type="text" name="email" id="email" value={email} onChange={handleChange}></input>
+                </div>
+                <div className="form-row">
+                    {oldEmailError === "" ? <p className="error-message">{emailError}</p> : <p className="error-message">{oldEmailError}</p>}
+                
+                </div>
+                <div className="form-row">
+                    <label htmlFor="username">Username:</label>
+                    <input required type="text" name="username" id="username" value={username} onChange={handleChange}></input>
+                </div>
+                <div className="form-row">
+                    <p className="error-message">{userError}</p>
+                </div>
+                <div className="form-row">
+                    <label htmlFor="password">Password:</label>
+                    <input required type="text" name="password" id="password" value={password} onChange={handleChange}></input>
+                </div>
+                <div className="form-row">
+                    <p className="error-message">{passwordError}</p>
+                </div>
+                <div className="form-row">
+                    <input type="submit" value="Submit"></input>
+                </div>
+            </form>
+            <p>Already have an account? <Link to="Login">Log in here.</Link></p>
         </div>
         </div>
          )}
-        </>
+        </div>
     );
 }

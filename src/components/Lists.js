@@ -85,10 +85,10 @@ function Lists(props) {
             <Header />
             <div className="list-wrapper">
             <aside>
-                <h2>My Lists</h2>
+                <h3>My Lists</h3>
                     <ul>
                         {lists.map((list) => {
-                            return (<li key={list.id} className="list">{list.name}
+                            return (<li key={list.id} className="list">{list.name}&nbsp;
                                     <img src="/images/edit.png" alt="edit" id={list.id} className="button" onClick={openListModal} />
                                     <img src="/images/trashcan.png" alt="delete" id={list.id} className="button" onClick={handleDelete} />
                                     </li>
@@ -103,24 +103,26 @@ function Lists(props) {
                         <button onClick={handleCancel}>Cancel</button>
                         </form>
                     ) : null}
-                    {modal | listModal ? null : <button onClick={openModal}>Add New List</button>}
+                    {modal | listModal ? null : <button onClick={openModal} id="new-list-btn">Add New List</button>}
                 {modal ? (
                     <form onSubmit={addList}>
                     <label htmlFor="listName">Name:</label>
                     <input type="text" name="listName" id="listName" onChange={handleListChange} value={newList}></input>
-                    <input type="submit" value="Add"></input>
+                    <input type="submit" value="Add" className="add-btn"></input>
                     <button onClick={handleCancel}>Cancel</button>
                     </form>
                     ) : null
                 }
             </aside>
             <div className="main-content">
-                <h1>Welcome {currentUser.username}!</h1>
-                <button onClick={handleLogOut}>Logout</button>
+                <div className="welcomeHeader">
+                    <h2>Welcome {currentUser.username}!</h2>
+                    <button onClick={handleLogOut}>Logout</button>
+                </div>
                 <ul>
                 {lists.map(list => {
                     return (
-                        <li key={list.id}>
+                        <li key={list.id} className="item-title">
                             <h3>{list.name}</h3>
                             <Items id={list.id} />
                         </li>

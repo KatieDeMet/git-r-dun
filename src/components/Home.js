@@ -5,11 +5,15 @@ import Header from './Header';
 
 export default function Home() {
     return (
-        <div>
-            <Header />
-            <h1>Welcome to Git 'R Dun!</h1>
-                <h2>Manage all your household tasks with a single app!</h2>
-                    <p>Please <Link to="/login">log in</Link> or <Link to="/signup">sign up here</Link></p> 
+        <div className="main-background">
+        <Header />
+        <div className="main">
+            <div className="landing-page">
+                <h2>Welcome to <span style={{fontFamily: 'Nothing You Could Do'}}>Git 'R Dun!</span></h2>
+                    <h3>Manage all your household tasks with a single app!</h3>
+                        <p>Please <Link to="/login">log in</Link> or <Link to="/signup">sign up here</Link></p> 
+            </div>
+        </div>
         </div>
     )
 }

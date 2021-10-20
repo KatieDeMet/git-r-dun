@@ -4,12 +4,25 @@
   box-sizing: border-box;
 }
 
+body {
+  font-family: 'Trebuchet MS', Arial, sans-serif;
+  color: #fff;
+}
+
+.main-background {
+  background: #FFFFA9 url("notepad2.jpg") repeat;
+}
+
 .header {
-  background-color: lightblue;
+  background-color: #F4F4F4;
+  color: #000;
   display: flex;
-  width: 100vw;
+  width: 100%;
   height: 10vh;
   align-items: center;
+  font-family: 'Nothing You Could Do','Trebuchet MS', Arial, sans-serif;
+  font-size: 1rem;
+  box-shadow: 0 10px 10px #888;
 }
 
 .header img {
@@ -24,49 +37,160 @@
   justify-content: center;
   align-items: center;
   width: 100vw;
-  height: 100vh;
+  height: 90vh;
+}
+
+.landing-page {
+  background-color: #abcdef;
+  width: 50vw;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 30px;
+  box-shadow: 5px 10px 10px #888;
+}
+
+h2, h3 {
+  margin-bottom: 15px;
 }
 
 .form-container {
   width: 50vw;
-  height: 50vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  background-color: palegoldenrod;
-}
-
-form {
-  width: 50%;
   height: auto;
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #abcdef;
+  padding: 30px 0;
+  box-shadow: 5px 10px 10px #888;
 }
 
-form input {
+.form-container a {
+  color: #888;
+}
+
+.form-container a:visited, .landing-page a:visited {
+  color: #FFF8A8;
+}
+
+form {
+  width: 45%;
+  height: auto;
+}
+
+.form-row {
+  width: 100%;
+  height: 2rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus {
+  -webkit-box-shadow:0 0 0 50px white inset;
+  -webkit-text-fill-color: #000;
+  -webkit-appearance: none;
+}
+
+.form-row input, .list-wrapper input {
   border-radius: 5px;
   padding: 5px;
   margin: 5px;
+  border: 2px solid #888;
 }
 
-form input[submit] {
-  width: 50%;
+.form-row input:focus, .form-row input:hover, .form-row input:active {
+  background-color: #FFF;
+  border: 2px solid #FFF8A8;
+  outline: 0;
+  outline: none;
+  color: #000;
+}
+
+.form-row input[type=submit] {
+  background-color: #888;
+  color: #FFF;
+  font-weight: bold;
+  cursor: pointer;
+  padding: 5px;
+  width: 30%;
+  margin: 0 auto 10px auto;
+  border: none;
+  /* border: 2px outset #777; */
 }
 
 .error-message {
   color: red;
 }
 
-.list-wrapper {
-  display: flex;
+.wrapper {
   width: 100vw;
-  height: 90vh;
+  height: auto;
+  background-color: #FFF8A8;
+  margin: 0;
+  padding: 0;
+}
+
+.list-wrapper {
+  color: #888;
+  margin: 20px 0 0 0;
+  display: flex;
+  width: 100%;
+  height: auto;
+  padding: 0;
+}
+
+.list-wrapper button, .add-btn, .cncl-btn {
+  background-color: #888;
+  color: #FFF;
+  font-weight: bold;
+  cursor: pointer;
+  padding: 5px;
+  border-radius: 5px;
+  border: none;
+  /* border: 2px outset #777; */
+}
+
+.welcomeHeader {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
 }
 
 aside {
-  width: 30%;
-  height: 90vh;
+  width: 20vw;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  border-right: 2px dashed red;
+}
+
+aside ul {
+  margin: 15px 0;
+}
+
+aside ul li {
+  list-style-type: none;
+  padding: 2px 0;
+}
+
+#new-list-btn {
+  width: 50%;
+}
+
+.item-title {
+  padding-top: 10px;
+}
+
+.item-list {
+  margin: 15px 0;
 }
 
 .button {
@@ -77,9 +201,20 @@ aside {
 }
 
 .main-content {
-  width: 70%;
+  padding-left: 35px;
+  width: 60vw;
   height: 90vh;
+  display: flex;
+  flex-direction: column;
 }
 
+.list-item {
+  border-bottom: 2px solid #abcdef;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  list-style: none;
+  padding: 2px 0;
+}
 
 

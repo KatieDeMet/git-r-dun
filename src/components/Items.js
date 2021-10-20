@@ -75,12 +75,14 @@ export default function Items(props) {
 
     return (
         <>
-        <ul>
+        <ul className="item-list">
             {items.map((item) => {
                 return (
-                    <li key={item.id}>{item.description}
-                    <img src="/images/edit.png" alt="edit" id={item.id} className="button" onClick={openEditModal} />
-                    <img src="/images/trashcan.png" alt="delete" id={item.id} className="button" onClick={handleDelete} />
+                    <li key={item.id} className="list-item">{item.description}
+                    <div>
+                        <img src="/images/edit.png" alt="edit" id={item.id} className="button" onClick={openEditModal} />
+                        <img src="/images/trashcan.png" alt="delete" id={item.id} className="button" onClick={handleDelete} />
+                    </div>
                     </li>
                 )
             })}
@@ -90,7 +92,7 @@ export default function Items(props) {
                 <label htmlFor="editListItem">Edit Item:</label>
                 <input type="text" name="editListItem" value={newItem} onChange={handleChange}></input>
                 <input type="submit" value="Edit Item"></input>
-                <button onClick={handleCancel}>Cancel</button>
+                <button onClick={handleCancel} className="cncl-btn">Cancel</button>
             </form>
         ) : null}
         {modal | editModal ? null : <button onClick={openModal}>Add Item</button>}
@@ -98,8 +100,8 @@ export default function Items(props) {
             <form onSubmit={handleAddItem}>
                 <label htmlFor="addListItem">New Item:</label>
                 <input type="text" name="addListItem" id="addListItem" value={newItem} onChange={handleChange}></input>
-                <input type="submit" value="Add Item"></input>
-                <button onClick={handleCancel}>Cancel</button>
+                <input type="submit" value="Add Item" className="add-btn"></input>
+                <button onClick={handleCancel} className="cncl-btn">Cancel</button>
             </form>
         ) : null}
         </>
