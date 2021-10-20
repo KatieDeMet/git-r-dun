@@ -1,10 +1,10 @@
-require('dotenv').config();
+// require('dotenv').config();
 const express = require('express');
 const massive = require('massive');
 const cors = require('cors');
 const path = require('path');
 const { DATABASE_URL } = process.env;
-const PORT = process.env.PORT | 7777;
+const { PORT } = process.env || 7777;
 const cntl = require('./controllers')
 
 const app = express();
@@ -15,7 +15,7 @@ app.use(cors());
 app.use(express.static(path.resolve(__dirname, "../build")))
 
 app.get('*', (req, res) => { 
-    res.sendFile(path.join(__dirname, '../build'))
+    res.sendFile(path.join(__dirname, '../build', 'index.html'))
 })
 
 app.get("/user/:name/:pass", cntl.getUser);
