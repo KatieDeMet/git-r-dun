@@ -4,7 +4,7 @@ const massive = require('massive');
 const cors = require('cors');
 const path = require('path');
 const { DATABASE_URL } = process.env;
-const SERVER_PORT = process.env.PORT | 7777;
+const PORT = process.env.PORT | 7777;
 const cntl = require('./controllers')
 
 const app = express();
@@ -35,5 +35,6 @@ massive({
 }).then(db => {
     app.set('db', db);
     console.log('db connected')
-    app.listen(SERVER_PORT, () => console.log(`Up on port ${SERVER_PORT}`))
 });
+
+app.listen(PORT, () => console.log(`Up on port ${PORT}`))
