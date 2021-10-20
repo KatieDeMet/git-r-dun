@@ -3,7 +3,8 @@ const express = require('express');
 const massive = require('massive');
 const cors = require('cors');
 const path = require('path');
-const { CONNECTION_STRING, SERVER_PORT} = process.env;
+const { DATABASE_URL } = process.env;
+const SERVER_PORT = process.env.PORT | 7777;
 const cntl = require('./controllers')
 
 const app = express();
@@ -28,7 +29,7 @@ app.patch("/items/:id", cntl.updateItem);
 app.delete("/items/:id", cntl.deleteItem);
 
 massive({
-    connectionString: CONNECTION_STRING,
+    connectionString: DATABASE_URL,
     ssl: { rejectUnauthorized: false }
 }).then(db => {
     app.set('db', db);
