@@ -67,7 +67,7 @@ h2, h3 {
   box-shadow: 5px 10px 10px #888;
 }
 
-.form-container a {
+.form-container a, .landing-page a {
   color: #888;
 }
 
