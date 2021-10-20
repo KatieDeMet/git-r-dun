@@ -14,9 +14,9 @@ app.use(cors());
 // app.use(express.static(`${__dirname}../public/index.html`));
 app.use(express.static(path.resolve(__dirname, "../build")))
 
-// app.get('*', (req, res) => { 
-//     res.sendFile(path.join(__dirname, '../public/index.html'))
-// })
+app.get('*', (req, res) => { 
+    res.sendFile(path.join(__dirname, '../build'))
+})
 
 app.get("/user/:name/:pass", cntl.getUser);
 app.get("/lists/:id", cntl.getLists);
