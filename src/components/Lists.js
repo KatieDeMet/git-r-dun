@@ -89,8 +89,10 @@ function Lists(props) {
                     <ul>
                         {lists.map((list) => {
                             return (<li key={list.id} className="list">{list.name}&nbsp;
+                                    <div className="btn-div">
                                     <img src="/images/edit.png" alt="edit" id={list.id} className="button" onClick={openListModal} />
                                     <img src="/images/trashcan.png" alt="delete" id={list.id} className="button" onClick={handleDelete} />
+                                    </div>
                                     </li>
                                 )
                         })}
@@ -103,7 +105,7 @@ function Lists(props) {
                         <button onClick={handleCancel}>Cancel</button>
                         </form>
                     ) : null}
-                    {modal | listModal ? null : <button onClick={openModal} id="new-list-btn">Add New List</button>}
+                    {modal | listModal ? null : <button onClick={openModal} id="new-list-btn">New List</button>}
                 {modal ? (
                     <form onSubmit={addList}>
                     <label htmlFor="listName">Name:</label>

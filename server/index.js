@@ -3,8 +3,7 @@ const express = require('express');
 const massive = require('massive');
 const cors = require('cors');
 const path = require('path');
-const { DATABASE_URL } = process.env;
-const { PORT } = process.env || 7777;
+const { DATABASE_URL, PORT } = process.env;
 const cntl = require('./controllers')
 
 const app = express();

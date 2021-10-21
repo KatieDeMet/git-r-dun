@@ -2,6 +2,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-size: 1rem;
 }
 
 body {
@@ -20,15 +21,18 @@ body {
   width: 100%;
   height: 10vh;
   align-items: center;
-  font-family: 'Nothing You Could Do','Trebuchet MS', Arial, sans-serif;
-  font-size: 1rem;
   box-shadow: 0 10px 10px #888;
+}
+
+h1 {
+  font-size: 1.5rem;
+  font-family: 'Nothing You Could Do','Trebuchet MS', Arial, sans-serif;
 }
 
 .header img {
   height: 8vh;
   width: auto;
-  padding-right: 10px;
+  padding: 0 10px;
   cursor: pointer;
 }
 
@@ -52,6 +56,7 @@ body {
 }
 
 h2, h3 {
+  font-size: 1.25rem;
   margin-bottom: 15px;
 }
 
@@ -75,8 +80,8 @@ h2, h3 {
   color: #FFF8A8;
 }
 
-form {
-  width: 45%;
+.form-container form {
+  width: 50%;
   height: auto;
 }
 
@@ -89,12 +94,20 @@ form {
   align-items: center;
 }
 
+label {
+  font-weight: bold;
+}
+
 input:-webkit-autofill,
 input:-webkit-autofill:hover, 
 input:-webkit-autofill:focus {
   -webkit-box-shadow:0 0 0 50px white inset;
   -webkit-text-fill-color: #000;
   -webkit-appearance: none;
+}
+
+.form-row input[type="text"] {
+  width: 50%;
 }
 
 .form-row input, .list-wrapper input {
@@ -181,8 +194,13 @@ aside ul li {
   padding: 2px 0;
 }
 
+.list {
+  display: flex;
+  flex-direction: row;
+}
+
 #new-list-btn {
-  width: 50%;
+  width: fit-content;
 }
 
 .item-title {
@@ -194,7 +212,7 @@ aside ul li {
 }
 
 .button {
-  width: 12px;
+  width: 14px;
   height: auto;
   margin: 0 2px;
   cursor: pointer;
@@ -217,4 +235,15 @@ aside ul li {
   padding: 2px 0;
 }
 
-
+@media screen and (max-width: 850px) {
+  .form-container form {
+    width: 90%;
+    height: auto;
+  }
+  .form-container p {
+    margin: 15px;
+  }
+  .form-row, .list {
+    flex-direction: column;
+  }
+}
